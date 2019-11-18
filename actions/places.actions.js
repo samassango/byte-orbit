@@ -40,3 +40,7 @@ export const loadAllPlaces = () => dispatch => {
 export const removeLocation = payload => {
   return { type: constants.LOAD_PLACES_REMOVE_REQUEST, payload };
 };
+
+export const createLocation = locationInfo => {
+  return { type: constants.LOAD_CREATE_NEW_LOCATION, payload: locationInfo };
+};

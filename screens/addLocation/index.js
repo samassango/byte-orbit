@@ -11,6 +11,7 @@ import {
 } from "native-base";
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
+import { useDispatch } from "react-redux";
 
 const AddLocation = () => {
   const [address, setAddress] = useState(null);
@@ -21,8 +22,10 @@ const AddLocation = () => {
     name: null
   });
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const getAddressLocation = async () => {
+    if (address === null) return;
     setIsLoading(true);
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== "granted") {
@@ -39,24 +42,33 @@ const AddLocation = () => {
       formatted_address: address,
       name: address
     });
+    dispatch(action.createLocation(locationInfo));
     setIsLoading(false);
   };
 
   return (
     <Container>
-      <Content>
+      <Content
+        style={{
+          marginLeft: 10,
+          marginRight: 10,
+          marginTop: 1,
+          padding: 5,
+          backgroundColor: "#eaebe6"
+        }}
+      >
         <Item>
           <Input
             placeholder="Enter new address"
             onChangeText={e => setAddress(e.target.value)}
           />
-          <Icon active name="address" />
+          <Icon active name="md-search" />
         </Item>
         <Item>
           {isLoading ? (
             <Spinner color="#6e4cad" />
           ) : (
-            <Button onPress={() => getAddressLocation()}>
+            <Button onPress={() => getAddressLocation()} full>
               <Text>Create Address</Text>
             </Button>
           )}

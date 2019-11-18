@@ -31,7 +31,7 @@ const WeatherScreen = () => {
         style={{
           marginLeft: 10,
           marginRight: 10,
-          marginTop: 30,
+          marginTop: 1,
           padding: 5,
           backgroundColor: "#eaebe6"
         }}

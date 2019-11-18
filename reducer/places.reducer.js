@@ -20,6 +20,9 @@ const Places = (state = initialState, { type, payload } = actions) => {
         place => place.key_id != payload.key_id
       );
       return { ...state, places: newPlaces };
+    case constants.LOAD_CREATE_NEW_LOCATION:
+      const newPlacesList = state.Places.push(...payload);
+      return { ...state, places: newPlacesList };
     default:
       return state;
   }
