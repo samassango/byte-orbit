@@ -68,8 +68,12 @@ const AddLocation = () => {
           {isLoading ? (
             <Spinner color="#6e4cad" />
           ) : (
-            <Button onPress={() => getAddressLocation()} full>
-              <Text>Create Address</Text>
+            <Button
+              style={{ width: "100%", color: "#ffffff" }}
+              onPress={() => getAddressLocation()}
+              full
+            >
+              <Text style={{ color: "#ffffff" }}>Create Address</Text>
             </Button>
           )}
         </Item>

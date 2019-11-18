@@ -21,7 +21,7 @@ import { overlay } from "react-native-paper";
 const PlacesScreen = () => {
   const places = useSelector(state => state.places.places);
   const placesIsLoading = useSelector(state => state.places.isLoading);
-  const navigation = useSelector(state => state.navigation);
+  const state = useSelector(state => state);
   const dispatch = useDispatch();
   navigationOptions = {
     title: "Home"
@@ -31,7 +31,7 @@ const PlacesScreen = () => {
   }, [dispatch]);
   console.log("places", places);
   /* render function, etc */
-
+  console.log("state", state);
   const handleRemoveItem = location => {
     dispatch(action.removeLocation(location));
   };
@@ -88,7 +88,7 @@ const PlacesScreen = () => {
                   name="add"
                   style={{ fontSize: 30, color: "white" }}
                   onPress={() => {
-                    navigation.navigate("AddLocation");
+                    state.navigation.navigate("AddLocation");
                   }}
                 />
               </Button>
