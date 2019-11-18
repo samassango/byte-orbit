@@ -15,6 +15,11 @@ const Places = (state = initialState, { type, payload } = actions) => {
       return { ...state, isLoading: false, isLoaded: true, places: payload };
     case constants.LOAD_PLACES_REQUEST_FAIL:
       return { ...state, isLoading: false, isLoaded: false, error: payload };
+    case constants.LOAD_PLACES_REMOVE_REQUEST:
+      const newPlaces = state.places.filter(
+        place => place.key_id != payload.key_id
+      );
+      return { ...state, places: newPlaces };
     default:
       return state;
   }
