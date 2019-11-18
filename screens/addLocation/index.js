@@ -12,6 +12,7 @@ import {
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import { useDispatch } from "react-redux";
+import * as action from "../../actions/places.actions";
 
 const AddLocation = () => {
   const [address, setAddress] = useState(null);
