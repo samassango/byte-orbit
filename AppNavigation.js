@@ -56,11 +56,11 @@ const CaptureStack = createStackNavigator({
       },
       headerLeft: (
         <Ionicon
-          style={{ paddingRight: 5, color: "#E0E4E3" }}
+          style={{ paddingLeft: 10, color: "#E0E4E3" }}
           name="md-arrow-back"
           onPress={() => {
             console.log(navigation);
-            navigation.navigate("Location");
+            navigation.navigate("Home");
           }}
           size={25}
         />
@@ -76,10 +76,10 @@ const CaptureStack = createStackNavigator({
       },
       headerLeft: (
         <Ionicon
-          style={{ paddingTop: 1, color: "#E0E4E3" }}
+          style={{ paddingLeft: 10, color: "#E0E4E3" }}
           name="md-arrow-back"
           onPress={() => {
-            navigation.navigate("Location");
+            navigation.navigate("Home");
           }}
           size={25}
         />

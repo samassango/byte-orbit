@@ -17,8 +17,8 @@ import * as action from "../../actions/places.actions";
 const AddLocation = () => {
   const [address, setAddress] = useState(null);
   const [locationInfo, setLocationInfo] = useState({
-    latitude: 0,
-    longitude: 0,
+    latitude: null,
+    longitude: null,
     formatted_address: null,
     name: null
   });
@@ -36,14 +36,20 @@ const AddLocation = () => {
     }
 
     let location = await Location.geocodeAsync(address);
-    setLocationInfo({
-      ...locationInfo,
-      latitude: location.latitude,
-      longitude: location.longitude,
-      formatted_address: address,
-      name: address
-    });
-    dispatch(action.createLocation(locationInfo));
+    console.log(address);
+    console.log(location);
+    if (location) {
+      setLocationInfo({
+        ...locationInfo,
+        latitude: location[0].latitude,
+        longitude: location[0].longitude,
+        formatted_address: address,
+        name: address
+      });
+      console.log("locationInfo", locationInfo);
+      dispatch(action.createLocation(locationInfo));
+    }
+
     setIsLoading(false);
   };
 
