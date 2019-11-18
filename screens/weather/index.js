@@ -9,8 +9,11 @@ import {
   Text,
   Left,
   Body,
-  Icon
+  Icon,
+  Right
 } from "native-base";
+import Ionicon from "@expo/vector-icons/Ionicons";
+
 import * as action from "../../actions/whether.actions";
 
 const WeatherScreen = () => {
@@ -37,25 +40,39 @@ const WeatherScreen = () => {
         }}
       >
         {weather && weather.hasOwnProperty("weather") && (
-          <Card style={{ elevation: 3 }}>
+          <Card style={{ elevation: 3, margin: 10 }}>
             <CardItem>
               <Left>
                 <Body>
                   <Text>{weather.weather[0].description}</Text>
-                  <Text note>{celsius(weather.main.temp) + " C"}</Text>
+                  <Text note>
+                    {parseFloat(celsius(weather.main.temp)).toFixed(2) + " C"}
+                  </Text>
                 </Body>
               </Left>
+              <Right>
+                <Ionicon
+                  style={{ paddingTop: 1, color: "#E0E4E3" }}
+                  name="md-cloudy"
+                  size={25}
+                />
+              </Right>
             </CardItem>
             <CardItem cardBody>
-              <Text>
-                {whether.name}
-                {", " + weather.sys.country}
-              </Text>
+              <Left>
+                <Text>
+                  {weather.name}
+                  {", " + weather.sys.country}
+                </Text>
+              </Left>
             </CardItem>
             <CardItem>
-              <Text>
-                Wind speed: {weather.wind.speed + " " + weather.wind.deg + " C"}
-              </Text>
+              <Left>
+                <Text>
+                  Wind speed:{" "}
+                  {weather.wind.speed + " " + weather.wind.deg + " C"}
+                </Text>
+              </Left>
             </CardItem>
           </Card>
         )}
