@@ -52,7 +52,7 @@ const WeatherScreen = () => {
               </Left>
               <Right>
                 <Ionicon
-                  style={{ paddingTop: 1, color: "#E0E4E3" }}
+                  style={{ paddingLeft: 5, color: "#346beb" }}
                   name="md-cloudy"
                   size={25}
                 />
