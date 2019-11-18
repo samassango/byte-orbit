@@ -60,7 +60,7 @@ const AddLocation = () => {
         <Item>
           <Input
             placeholder="Enter new address"
-            onChangeText={e => setAddress(e.target.value)}
+            onChangeText={address => setAddress(address)}
           />
           <Icon active name="md-search" />
         </Item>

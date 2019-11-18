@@ -29,7 +29,7 @@ const PlacesScreen = () => {
   useEffect(() => {
     if (places === null) dispatch(action.loadAllPlaces());
   }, [dispatch]);
-  console.log("places", places);
+  //   console.log("places", places);
   /* render function, etc */
   console.log("state", state);
   const handleRemoveItem = location => {
