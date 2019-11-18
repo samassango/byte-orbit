@@ -63,53 +63,43 @@ const PlacesScreen = () => {
         }}
       >
         <List>
-          {places &&
+          {places ? (
             places.map((location, index) => (
-              <ListItem key={location.formatted_address + index} thumbnail>
-                <Left>
-                  <Thumbnail square source={{ uri: location.icon }} />
-                </Left>
-                <Body>
-                  <Text>{location.name}</Text>
-                  <Text note numberOfLines={4}>
-                    {location.formatted_address}
-                  </Text>
-                </Body>
-                <Right>
-                  <Icon
-                    style={{ fontSize: 18, color: "#6e4cad" }}
-                    size={25}
-                    name="remove-circle"
-                    onPress={() => handleRemoveItem(location)}
-                  />
-                </Right>
-              </ListItem>
-            ))}
+              <TouchableOpacity key={location.formatted_address + index}>
+                <ListItem thumbnail>
+                  <Left>
+                    <Thumbnail square source={{ uri: location.icon }} />
+                  </Left>
+                  <Body>
+                    <Text>{location.name}</Text>
+                    <Text note numberOfLines={4}>
+                      {location.formatted_address}
+                    </Text>
+                  </Body>
+                  <Right>
+                    <Icon
+                      style={{ fontSize: 18, color: "#6e4cad" }}
+                      size={25}
+                      name="remove-circle"
+                      onPress={() => handleRemoveItem(location)}
+                    />
+                  </Right>
+                </ListItem>
+              </TouchableOpacity>
+            ))
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                alignContent: "center",
+                margin: 10,
+                overlay: 1
+              }}
+            >
+              {placesIsLoading && <Spinner color="#6e4cad" />}
+            </View>
+          )}
         </List>
-        <View
-          style={{
-            flex: 1,
-            alignContent: "center",
-            borderRadius: "100%",
-            margin: 10,
-            overlay: 1
-          }}
-        >
-          <ListItem>{placesIsLoading && <Spinner color="#6e4cad" />}</ListItem>
-          <ListItem thumbnail>
-            <Right>
-              <Button>
-                <Icon
-                  name="add"
-                  style={{ fontSize: 30, color: "white" }}
-                  onPress={() => {
-                    state.navigation.navigate("AddLocation");
-                  }}
-                />
-              </Button>
-            </Right>
-          </ListItem>
-        </View>
       </Content>
     </Container>
   );

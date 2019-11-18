@@ -69,7 +69,11 @@ const AddLocation = () => {
             <Spinner color="#6e4cad" />
           ) : (
             <Button
-              style={{ width: "100%", color: "#ffffff" }}
+              style={{
+                width: "100%",
+                backgroundColor: "#6e4cad",
+                color: "#ffffff"
+              }}
               onPress={() => getAddressLocation()}
               full
             >

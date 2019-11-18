@@ -56,9 +56,10 @@ const CaptureStack = createStackNavigator({
       },
       headerLeft: (
         <Ionicon
-          style={{ paddingTop: 1, color: "#E0E4E3" }}
+          style={{ paddingRight: 5, color: "#E0E4E3" }}
           name="md-arrow-back"
           onPress={() => {
+            console.log(navigation);
             navigation.navigate("Location");
           }}
           size={25}
