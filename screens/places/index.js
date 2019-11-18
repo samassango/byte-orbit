@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View } from "react-native";
+import { View, Alert, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
@@ -33,7 +33,22 @@ const PlacesScreen = () => {
   /* render function, etc */
   console.log("state", state);
   const handleRemoveItem = location => {
-    dispatch(action.removeLocation(location));
+    Alert.alert(
+      "Confirm Delete",
+      "Are you sure you want to delete this field.",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "No"
+        },
+        {
+          text: "Yes",
+          onPress: () => dispatch(action.removeLocation(location))
+        }
+      ],
+      { cancelable: false }
+    );
   };
 
   return (
